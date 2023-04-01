@@ -28,7 +28,7 @@
 
 > `✅ 1.3.a` ↗️ _Right Click and select open as a new Tab..._
 >
-> [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/datastaxdevs/workshop-swinburne)
+> [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/clun/workshop-terraform)
 
 ### 1.4 - Setup Astra CLI
 
@@ -98,7 +98,7 @@ terraform apply
 
 Enter 'yes' when asked
 
-- `✅ 1.5.c` **See you db being created**
+- `✅ 1.5.c` **See your db being created**
 
 ```
 astra db list
