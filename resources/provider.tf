@@ -8,5 +8,5 @@ terraform {
 }
 
 provider "astra" {
-  token = "<change_me>"
+  token = "#TOKEN#"
 }
