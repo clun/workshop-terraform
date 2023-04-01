@@ -1,0 +1,39 @@
+tasks:
+  - name: setup
+    before: |
+      printf 'export PATH="$HOME%s:$PATH"\n' "/.astra/cli" >> $HOME/.bashrc
+      printf 'unset JAVA_TOOL_OPTIONS\n' >> $HOME/.bashrc
+      curl -Ls "https://dtsx.io/get-astra-cli" | bash >> ./install.log
+
+      sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+      wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+      gpg --no-default-keyring \
+        --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
+        --fingerprint
+      echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+        https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+        sudo tee /etc/apt/sources.list.d/hashicorp.list
+      sudo apt update
+      sudo apt-get install terraform
+
+    command: |
+      unset JAVA_TOOL_OPTIONS
+      source /home/gitpod/.astra/cli/astra-init.sh
+      cd /workspace/workshop-terraform/resources
+      terraform init
+      clear
+ports:
+  - port: 8080
+    onOpen: open-browser
+    visibility: public
+
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: false
+    addCheck: true
+    addComment: false
+    addBadge: true
+    addLabel: false
