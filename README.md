@@ -85,7 +85,7 @@ astra setup
 - `✅ 1.5.a` **Use the token to setup terraform**
 
 ```
-export ASTRA_TOKEN=`astra config get default --key ASTRA_DB_APPLICATION_TOKEN`
+export ASTRA_TOKEN=`astra token`
 sed -i "s/#TOKEN#/${ASTRA_TOKEN}/g" /workspace/workshop-terraform/resources/provider.tf
 ```
 
